@@ -10,13 +10,17 @@ class CardsContainer extends React.Component {
   }
 
   render() {
-    return <Cards cards={this.props.cards} />
+    return <div>
+      {this.props.isLoading ? <img src='https://i.gifer.com/90OK.gif'></img> : null}
+      <Cards cards={this.props.cards} />
+    </div>
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cardsPage.cards
+    cards: state.cardsPage.cards,
+    isLoading: state.cardsPage.isLoading
   }
 }
-export default connect(mapStateToProps, {getCardsThunkCreator})(CardsContainer)
+export default connect(mapStateToProps, { getCardsThunkCreator })(CardsContainer)
