@@ -8,12 +8,12 @@ const Card = (props) => {
   }
 
   return (
-    <div id={props.id} key={props.id} className={style.card}>
-      <div onClick={hey} className={style.image} style={{ backgroundImage: `url(${props.link})` }}>
+    <div id={props.id} key={props.card.id} className={style.card}>
+      <div onClick={hey} className={style.image} style={{ backgroundImage: `url(${props.card.link})` }}>
         <button className={style.deleteIcon}></button>
       </div>
       <div className={style.description}>
-        <h3 className={style.name}>{props.name}</h3>
+        <h3 className={style.name}>{props.card.name}</h3>
         <div className={style.likeContainer}>
           <button className={style.likeIcon}></button>
           <p className={style.likeCount}>{}</p>

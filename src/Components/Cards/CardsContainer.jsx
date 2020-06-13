@@ -2,6 +2,7 @@ import React from 'react';
 import Cards from './Cards';
 import { connect } from 'react-redux';
 import { getCardsThunkCreator } from '../../Redux/cardsReducer';
+import { compose } from 'redux';
 
 class CardsContainer extends React.Component {
 
@@ -11,8 +12,7 @@ class CardsContainer extends React.Component {
 
   render() {
     return <div>
-      {this.props.isLoading ? <img src='https://i.gifer.com/90OK.gif'></img> : null}
-      <Cards cards={this.props.cards} />
+      <Cards cards={this.props.cards} isLoading={this.props.isLoading} />
     </div>
   }
 }
@@ -23,4 +23,7 @@ const mapStateToProps = (state) => {
     isLoading: state.cardsPage.isLoading
   }
 }
-export default connect(mapStateToProps, { getCardsThunkCreator })(CardsContainer)
+
+export default compose(
+  connect(mapStateToProps, { getCardsThunkCreator })
+)(CardsContainer)

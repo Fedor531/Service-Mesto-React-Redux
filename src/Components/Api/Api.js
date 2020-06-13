@@ -13,6 +13,11 @@ export const Api = {
   getCards() {
     return instance.get('/cards')
       .then(res => res)
+  },
+
+  getUserInfo() {
+    return instance.get('/users/me')
+      .then(res => res.data)
   }
 }
 

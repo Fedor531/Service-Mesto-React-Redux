@@ -1,13 +1,12 @@
 import { Api } from "../Components/Api/Api"
 
-const ADD_CARD = 'ADD-CARD'
-const SET_CARDS = 'SET-CARDS'
+const SET_USER_INFO = 'SET-USER-INFO'
 const IS_LOADING = 'IS-LOADING'
 
 const initialState = {
-  cards: [
-    /* { _id: 1, name: 'Hello1', link: 'https://i.pinimg.com/originals/6a/6e/0f/6a6e0f09e8aa1972b4d63a0c9c57c226.jpg' } */
-  ],
+  profile: {
+
+  },
   isLoading: false
 }
 
@@ -15,9 +14,9 @@ const cardsReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    case SET_CARDS:
+    case SET_USER_INFO:
       return {
-        ...state, cards: [...action.cards]
+        ...state, profile: {...action.profile}
       }
 
     case IS_LOADING:
@@ -42,16 +41,15 @@ const cardsReducer = (state = initialState, action) => {
 
 /* export const addPostActionCreator = () => ({ type: ADD_CARD , name, link}) */
 
-export const setCards = (cards) => ({ type: SET_CARDS, cards })
+export const setUserInfo = (profile) => ({ type: SET_USER_INFO, profile })
 export const isLoading = (stateLoading) => ({ type: IS_LOADING, stateLoading })
 
-
-export const getCardsThunkCreator = () => {
+export const getUserInfoTC = () => {
   return (dispatch) => {
     dispatch(isLoading(true))
-    Api.getCards()
+    Api.getUserInfo()
       .then((res) => {
-        dispatch(setCards(res.data.splice(0,20)))
+        dispatch(setUserInfo(res))
         dispatch(isLoading(false))
       })
   }
