@@ -51,7 +51,7 @@ export const getCardsThunkCreator = () => {
     dispatch(isLoading(true))
     Api.getCards()
       .then((res) => {
-        dispatch(setCards(res.data.splice(0,20)))
+        dispatch(setCards(res.data))
         dispatch(isLoading(false))
       })
   }
