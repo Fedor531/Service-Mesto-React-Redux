@@ -15,6 +15,13 @@ class Profile extends React.Component {
     })
   }
 
+  saveChanged = () => {
+    this.setState({
+      editMode: false
+    })
+    this.props.updateProfileInfoTC(this.state.name, this.state.about)
+  }
+
   deActivateEditMode = () => {
     this.setState({
       editMode: false
@@ -34,7 +41,7 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) { // проверяем обновления на статус
-    if (prevProps.profile.name !== this.state.name || prevProps.profile.about !== this.state.about) {
+    if (prevProps.profile.name !== this.props.profile.name && prevProps.profile.about !== this.props.profile.about) {
       this.setState({
         name: this.props.profile.name,
         about: this.props.profile.about
@@ -50,9 +57,13 @@ class Profile extends React.Component {
           : <div className={style.profileContainer}>
             <div className={style.photo} style={{ backgroundImage: `url(${this.props.profile.avatar})` }}></div>
             <div className={style.info}>
-              {this.state.editMode ? <input value={this.state.name} type="text" /> : <p className={style.name}>{this.props.profile.name}</p>}
-              {this.state.editMode ? <input value={this.state.about} type="text" /> : <p className={style.job}>{this.props.profile.about}</p>}
-              {this.state.editMode ? <button onClick={this.deActivateEditMode} className={style.edit}>Save</button> : <button onClick={this.activateEditMode} className={style.edit}>Edit</button>}
+              {this.state.editMode ? <input className={style.input} onChange={this.onNameChange} value={this.state.name} type="text" /> : <p className={style.name}>{this.props.profile.name}</p>}
+              {this.state.editMode ? <input className={style.input} onChange={this.onAboutChange} value={this.state.about} type="text" /> : <p className={style.job}>{this.props.profile.about}</p>}
+              {this.state.editMode ? <div>
+                <button onClick={this.saveChanged} className={style.button}>Save</button>
+                <button onClick={this.deActivateEditMode} className={style.button}>Cancel</button>
+              </div>
+                : <button onClick={this.activateEditMode} className={style.button}>Edit</button>}
             </div>
           </div>}
       </div>

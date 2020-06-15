@@ -1,12 +1,18 @@
-import { Api } from "../Components/Api/Api"
+import { profileApi } from "../Components/Api/Api"
 
 const SET_USER_INFO = 'SET-USER-INFO'
 const IS_LOADING = 'IS-LOADING'
+const UPDATE_PROFILE_INFO = 'UPDATE-PROFILE-INFO'
 
 const initialState = {
   profile: {
-
+    name: null,
+    about: null,
+    avatar: null,
+    _id: null,
+    cohort: null
   },
+
   isLoading: false
 }
 
@@ -16,7 +22,7 @@ const cardsReducer = (state = initialState, action) => {
 
     case SET_USER_INFO:
       return {
-        ...state, profile: {...action.profile}
+        ...state, profile: { ...action.profile }
       }
 
     case IS_LOADING:
@@ -24,16 +30,10 @@ const cardsReducer = (state = initialState, action) => {
         ...state, isLoading: action.stateLoading
       }
 
-    /*    case ADD_CARD:
-         const newPost = {
-           id: 4,
-           message: state.newPostText
-         }
-         return {
-           ...state,
-           posts: [...state.posts, newPost],  //добавили новый элемент в конец массива
-           newPostText: '',
-         } */
+    case UPDATE_PROFILE_INFO:
+      return {
+        ...state, profile: {...action.profile}
+      }
 
     default: return state;
   }
@@ -43,15 +43,25 @@ const cardsReducer = (state = initialState, action) => {
 
 export const setUserInfo = (profile) => ({ type: SET_USER_INFO, profile })
 export const isLoading = (stateLoading) => ({ type: IS_LOADING, stateLoading })
+export const updateProfileInfo = (profile) => ({ type: UPDATE_PROFILE_INFO, profile })
 
 export const getUserInfoTC = () => {
   return (dispatch) => {
     dispatch(isLoading(true))
-    Api.getUserInfo()
+    profileApi.getUserInfo()
       .then((res) => {
         dispatch(setUserInfo(res))
         dispatch(isLoading(false))
       })
+  }
+}
+
+export const updateProfileInfoTC = (name, about) => {
+  return (dispatch) => {
+    profileApi.updatetUserInfo(name, about)
+    .then(data => {
+      dispatch(updateProfileInfo(data))
+    })
   }
 }
 

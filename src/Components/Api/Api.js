@@ -1,4 +1,4 @@
- import * as axios from 'axios'
+import * as axios from 'axios'
 
 const instance = axios.create({
   baseURL: 'https://praktikum.tk/cohort11',
@@ -9,16 +9,37 @@ const instance = axios.create({
 }); // настройка экземпляр axios
 
 
-export const Api = {
+export const profileApi = {
+
+  getUserInfo() {
+    return instance.get('/users/me')
+      .then(res => res.data)
+  },
+
+  updatetUserInfo(name, about) {
+    return instance.patch('/users/me', {
+      name: name,
+      about: about
+    })
+      .then(res => res.data)
+  }
+}
+
+export const cardsApi = {
+
   getCards() {
     return instance.get('/cards')
       .then(res => res)
   },
 
-  getUserInfo() {
-    return instance.get('/users/me')
+  addCard(name, link) {
+    return instance.post('/cards', {
+      name: name,
+      link: link
+    })
       .then(res => res.data)
-  }
+  },
+
 }
 
 

@@ -1,8 +1,8 @@
-import { Api } from "../Components/Api/Api"
+import { cardsApi } from "../Components/Api/Api"
 
-const ADD_CARD = 'ADD-CARD'
 const SET_CARDS = 'SET-CARDS'
 const IS_LOADING = 'IS-LOADING'
+const ADD_NEW_CARD = 'ADD-NEW-CARD'
 
 const initialState = {
   cards: [
@@ -25,34 +25,36 @@ const cardsReducer = (state = initialState, action) => {
         ...state, isLoading: action.stateLoading
       }
 
-    /*    case ADD_CARD:
-         const newPost = {
-           id: 4,
-           message: state.newPostText
-         }
-         return {
-           ...state,
-           posts: [...state.posts, newPost],  //добавили новый элемент в конец массива
-           newPostText: '',
-         } */
+    case ADD_NEW_CARD:
+      return {
+        ...state, cards: [...state.cards, action.newCard]
+      }
 
     default: return state;
   }
 }
 
-/* export const addPostActionCreator = () => ({ type: ADD_CARD , name, link}) */
-
 export const setCards = (cards) => ({ type: SET_CARDS, cards })
 export const isLoading = (stateLoading) => ({ type: IS_LOADING, stateLoading })
+export const addNewCard = (newCard) => ({ type: ADD_NEW_CARD, newCard })
 
 
 export const getCardsThunkCreator = () => {
   return (dispatch) => {
     dispatch(isLoading(true))
-    Api.getCards()
+    cardsApi.getCards()
       .then((res) => {
         dispatch(setCards(res.data))
         dispatch(isLoading(false))
+      })
+  }
+}
+
+export const addCardTC = (name, link) => {
+  return (dispatch) => {
+    cardsApi.addCard(name, link)
+      .then((data) => {
+        dispatch(addNewCard(data))
       })
   }
 }

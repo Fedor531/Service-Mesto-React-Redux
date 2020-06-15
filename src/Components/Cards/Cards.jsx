@@ -2,9 +2,10 @@ import React from 'react';
 import style from './Cards.module.css';
 import Card from './Card/Card';
 
+
 const Cards = (props) => {
 
-  const cardElement = props.cards.map(c => <Card card={c} />)
+  const cardElement = props.cards.map(c => <Card card={c} userId={props.userId} />)
 
   return (
     <div>
@@ -13,7 +14,9 @@ const Cards = (props) => {
         {cardElement}
       </div>
     </div >
-  );
+  )
+
 }
+
 
 export default Cards;

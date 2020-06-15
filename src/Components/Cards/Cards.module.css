@@ -26,9 +26,3 @@
 .button:focus {
   outline-color: greenyellow;
 }
-
-.popup {
-  width: 100px;
-  height: 200px;
-  background-color: blue;
-}

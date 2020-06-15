@@ -1,0 +1,12 @@
+.form.error input
+{
+  height: 50px;
+  border: 2px solid red;
+}
+
+.someError {
+  font-size: 16px;
+  color: red;
+  margin: 0;
+  height: 16px;
+}
