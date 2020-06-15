@@ -3,6 +3,7 @@ import { cardsApi } from "../Components/Api/Api"
 const SET_CARDS = 'SET-CARDS'
 const IS_LOADING = 'IS-LOADING'
 const ADD_NEW_CARD = 'ADD-NEW-CARD'
+const DELETE_CARD = 'DELETE-CARD'
 
 const initialState = {
   cards: [
@@ -30,6 +31,17 @@ const cardsReducer = (state = initialState, action) => {
         ...state, cards: [...state.cards, action.newCard]
       }
 
+    case DELETE_CARD:
+      return {
+        ...state,
+        cards: state.cards.map((card) => {
+          if (card._id === action.id) {
+            return console.log('удалили карточку') //распоковали user и поменяли followed false
+          }
+          return card
+        })
+      }
+
     default: return state;
   }
 }
@@ -37,6 +49,7 @@ const cardsReducer = (state = initialState, action) => {
 export const setCards = (cards) => ({ type: SET_CARDS, cards })
 export const isLoading = (stateLoading) => ({ type: IS_LOADING, stateLoading })
 export const addNewCard = (newCard) => ({ type: ADD_NEW_CARD, newCard })
+export const deleteCard = (id) => ({ type: DELETE_CARD, id })
 
 
 export const getCardsThunkCreator = () => {
@@ -55,6 +68,15 @@ export const addCardTC = (name, link) => {
     cardsApi.addCard(name, link)
       .then((data) => {
         dispatch(addNewCard(data))
+      })
+  }
+}
+
+export const deleteCardTC = (id) => {
+  return (dispatch) => {
+    cardsApi.deleteCard(id)
+      .then(() => {
+        dispatch(deleteCard(id))
       })
   }
 }

@@ -40,6 +40,11 @@ export const cardsApi = {
       .then(res => res.data)
   },
 
+  deleteCard(id) {
+    return instance.delete(`cards/${id}`)
+      .then(res => res.data)
+  },
+
 }
 
 
