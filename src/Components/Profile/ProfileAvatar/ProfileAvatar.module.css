@@ -1,0 +1,118 @@
+.photo {
+  box-sizing: border-box;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.photo:hover {
+  transition: .1s linear;
+  cursor: pointer;
+  border: 2px solid greenyellow;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.popupContainer {
+  position: relative;
+}
+
+.addCardForm {
+  color: #000;
+  width: 430px;
+  min-height: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 34px 36px;
+}
+
+@media screen and (max-width: 540px) {
+  .addCardForm {
+    width: calc(100% - 60px);
+  }
+}
+
+.openFormButton {
+  position: absolute;
+  top: 110px;
+  right: 300px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  display: block;
+  cursor: pointer;
+}
+
+.openFormButton:focus {
+  outline-color: greenyellow;
+}
+
+.input {
+  width: 100%;
+  height: 47px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  padding: 5px 6px 13px;
+}
+
+.input:last-of-type {
+  margin-bottom: 0;
+}
+
+.title {
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.submitButton {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  margin-top: 48px;
+  color: rgba(0, 0, 0, .5);
+  font-size: 18px;
+}
+
+.submitButton.isActive {
+  background-color: #000;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.popupClose {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
+
+.inputContainer {
+  margin: 40px 0 20px 0;
+}
+

@@ -22,7 +22,15 @@ export const profileApi = {
       about: about
     })
       .then(res => res.data)
+  },
+
+  updatetUserAvatar(link) {
+    return instance.patch('/users/me/avatar', {
+      avatar: link
+    })
+      .then(res => res.data)
   }
+
 }
 
 export const cardsApi = {

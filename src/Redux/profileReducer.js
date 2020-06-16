@@ -3,6 +3,7 @@ import { profileApi } from "../Components/Api/Api"
 const SET_USER_INFO = 'SET-USER-INFO'
 const IS_LOADING = 'IS-LOADING'
 const UPDATE_PROFILE_INFO = 'UPDATE-PROFILE-INFO'
+const UPDATE_PROFILE_AVATAR = 'UPDATE-PROFILE-AVATAR'
 
 const initialState = {
   profile: {
@@ -32,7 +33,12 @@ const cardsReducer = (state = initialState, action) => {
 
     case UPDATE_PROFILE_INFO:
       return {
-        ...state, profile: {...action.profile}
+        ...state, profile: { ...action.profile }
+      }
+
+    case UPDATE_PROFILE_AVATAR:
+      return {
+        ...state, profile: { ...action.profile }
       }
 
     default: return state;
@@ -44,6 +50,7 @@ const cardsReducer = (state = initialState, action) => {
 export const setUserInfo = (profile) => ({ type: SET_USER_INFO, profile })
 export const isLoading = (stateLoading) => ({ type: IS_LOADING, stateLoading })
 export const updateProfileInfo = (profile) => ({ type: UPDATE_PROFILE_INFO, profile })
+export const updateProfileAvatar = (profile) => ({ type: UPDATE_PROFILE_AVATAR, profile })
 
 export const getUserInfoTC = () => {
   return (dispatch) => {
@@ -59,9 +66,18 @@ export const getUserInfoTC = () => {
 export const updateProfileInfoTC = (name, about) => {
   return (dispatch) => {
     profileApi.updatetUserInfo(name, about)
-    .then(data => {
-      dispatch(updateProfileInfo(data))
-    })
+      .then(data => {
+        dispatch(updateProfileInfo(data))
+      })
+  }
+}
+
+export const updateProfileAvatarTC = (link) => {
+  return (dispatch) => {
+    profileApi.updatetUserAvatar(link)
+      .then(data => {
+        dispatch(updateProfileAvatar(data))
+      })
   }
 }
 

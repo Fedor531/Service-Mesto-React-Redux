@@ -1,14 +1,19 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUserInfoTC, updateProfileInfoTC } from '../../Redux/profileReducer';
+import { updateProfileInfoTC, updateProfileAvatarTC } from '../../Redux/profileReducer';
 import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
 
   render() {
     return <div>
-      <Profile profile={this.props.profile} isLoading={this.props.isLoading} updateProfileInfoTC={this.props.updateProfileInfoTC} />
+      <Profile
+      profile={this.props.profile}
+      isLoading={this.props.isLoading}
+      updateProfileInfoTC={this.props.updateProfileInfoTC}
+      updateProfileAvatarTC={this.props.updateProfileAvatarTC}
+       />
     </div>
   }
 }
@@ -21,5 +26,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-  connect(mapStateToProps, { updateProfileInfoTC })
+  connect(mapStateToProps, { updateProfileInfoTC, updateProfileAvatarTC })
 )(ProfileContainer)
