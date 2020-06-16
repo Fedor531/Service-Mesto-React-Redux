@@ -4,7 +4,11 @@ import Card from './Card/Card';
 
 
 const Cards = (props) => {
-  const cardElement = props.cards.map(c => <Card card={c} userId={props.userId} deleteCardTC={props.deleteCardTC} />)
+  const cardElement = props.cards.map(c => <Card card={c}
+    userId={props.userId}
+    deleteCardTC={props.deleteCardTC}
+    deleteLikeTC={props.deleteLikeTC}
+    addLikeTC={props.addLikeTC} />)
 
   return (
     <div>

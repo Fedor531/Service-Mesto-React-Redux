@@ -64,7 +64,7 @@
   transition: transform .3s linear;
 }
 
-.likeIcon1 {
+.likeIcon.isLiked {
   background-image: url(../../../images/like-active.svg);
 }
 

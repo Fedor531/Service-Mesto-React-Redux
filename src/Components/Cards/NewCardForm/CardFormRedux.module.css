@@ -33,6 +33,9 @@
 }
 
 .openFormButton {
+  position: absolute;
+  top: 110px;
+  right: 300px;
   background-color: transparent;
   border: 1px solid white;
   color: white;

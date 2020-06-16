@@ -1,34 +1,73 @@
 import React from 'react';
 import style from './Card.module.css';
 
-const Card = (props) => {
+class Card extends React.Component {
 
-  const hey = (e) => {
+  state = {
+    isLike: false
+  }
+
+  componentDidMount() {
+    this.props.card.likes.forEach((item) => {
+      if (item._id === this.props.userId) {
+        this.setState({
+          isLike: true
+        })
+      }
+    })
+  }
+
+  hey = (e) => {
     alert('hey')
   }
-console.log(props)
-  const deleteCard = (e) => {
+
+  deleteCard = (e) => {
     e.stopPropagation()
-    if(window.confirm('Вы действительно хотите удалить карточку?')){
-      props.deleteCardTC(props.card._id)
+    if (window.confirm('Вы действительно хотите удалить карточку?')) {
+      this.props.deleteCardTC(this.props.card._id)
     }
   }
 
-  return (
-    <div /* id={props.card._id} key={props.card._id} */ className={style.card}>
-      <div onClick={hey} className={style.image} style={{ backgroundImage: `url(${props.card.link})` }}>
-        {props.userId === props.card.owner._id ? <button onClick={deleteCard} className={style.deleteIcon}></button> : undefined}
-      </div>
-      <div className={style.description}>
-        <h3 className={style.name}>{props.card.name}</h3>
-        <div className={style.likeContainer}>
-          <button className={ /* props.userId === props.card.owner._id *//*  ? */ style.likeIcon /* : style.likeIcon1 */}></button>
-          <p className={style.likeCount}>{props.card.likes.length}</p>
+  addLike = (id) => {
+    this.props.addLikeTC(id)
+    this.setState({
+      isLike: true
+    })
+  }
+
+  deleteLike = (id) => {
+    this.props.deleteLikeTC(id)
+    this.setState({
+      isLike: false
+    })
+  }
+
+  render() {
+    return (
+      <div className={style.card}>
+        <div onClick={this.hey} className={style.image} style={{ backgroundImage: `url(${this.props.card.link})` }}>
+          {this.props.userId === this.props.card.owner._id ? <button onClick={this.deleteCard} className={style.deleteIcon}></button> : undefined}
+        </div>
+        <div className={style.description}>
+          <h3 className={style.name}>{this.props.card.name}</h3>
+          <div className={style.likeContainer}>
+            {this.state.isLike
+              ? <button onClick={() => this.deleteLike(this.props.card._id)} className={style.likeIcon + ' ' + style.isLiked}></button>
+              : <button onClick={() => this.addLike(this.props.card._id)} className={style.likeIcon}></button>}
+            <p className={style.likeCount}>{this.props.card.likes.length}</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Card;
+
+
+/* {props.card.likes.forEach((item) => {
+            if (item._id === props.userId) {
+              return true
+            } return  false
+          }) ? (style.likeIcon + ' ' + style.isLiked) : style.likeIcon} */
 

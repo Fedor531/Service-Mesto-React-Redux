@@ -29,7 +29,7 @@ export const cardsApi = {
 
   getCards() {
     return instance.get('/cards')
-      .then(res => res)
+      .then(res => res.data)
   },
 
   addCard(name, link) {
@@ -44,6 +44,18 @@ export const cardsApi = {
     return instance.delete(`cards/${id}`)
       .then(res => res.data)
   },
+
+  addLikeCard(id) {
+    return instance.put(`cards/like/${id}`)
+      .then(res => res.data)
+  },
+
+  deleteLikeCard(id) {
+    return instance.delete(`cards/like/${id}`)
+      .then(res => res.data)
+  },
+
+
 
 }
 
