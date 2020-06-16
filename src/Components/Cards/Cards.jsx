@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Cards.module.css';
 import Card from './Card/Card';
+import Preloader from '../Preloader/Preloader';
 
 
 const Cards = (props) => {
@@ -13,7 +14,7 @@ const Cards = (props) => {
   return (
     <div>
       <div className={style.cardsContainer}>
-        {props.isLoading ? <img src='https://i.gifer.com/90OK.gif' alt='Загрузка...' className={style.preloader}></img> : null}
+        {/* {props.isLoading ? <Preloader /> : null} */}
         {cardElement}
       </div>
     </div >

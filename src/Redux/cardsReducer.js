@@ -11,7 +11,7 @@ const initialState = {
   cards: [
     /* { _id: 1, name: 'Hello1', link: 'https://i.pinimg.com/originals/6a/6e/0f/6a6e0f09e8aa1972b4d63a0c9c57c226.jpg' } */
   ],
-  isLoading: false
+  isLoading: true
 }
 
 const cardsReducer = (state = initialState, action) => {
@@ -82,7 +82,7 @@ export const deleteLike = (card) => ({ type: DELETE_LIKE, card })
 export const getCardsThunkCreator = () => {
   return (dispatch) => {
     dispatch(isLoading(true))
-    cardsApi.getCards()
+    return cardsApi.getCards()
       .then((data) => {
         dispatch(setCards(data))
         dispatch(isLoading(false))
@@ -110,7 +110,7 @@ export const deleteCardTC = (id) => {
 
 export const addLikeTC = (id) => {
   return (dispatch) => {
-    cardsApi.addLikeCard(id)
+    return cardsApi.addLikeCard(id)
       .then(card => {
         dispatch(addLike(card))
       })
@@ -119,7 +119,7 @@ export const addLikeTC = (id) => {
 
 export const deleteLikeTC = (id) => {
   return (dispatch) => {
-    cardsApi.deleteLikeCard(id)
+    return cardsApi.deleteLikeCard(id)
       .then(card => {
         dispatch(deleteLike(card))
       })

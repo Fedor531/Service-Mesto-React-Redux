@@ -6,10 +6,6 @@ import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
 
-  componentDidMount() {
-    this.props.getUserInfoTC()
-  }
-
   render() {
     return <div>
       <Profile profile={this.props.profile} isLoading={this.props.isLoading} updateProfileInfoTC={this.props.updateProfileInfoTC} />
@@ -25,5 +21,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-  connect(mapStateToProps, { getUserInfoTC, updateProfileInfoTC })
+  connect(mapStateToProps, { updateProfileInfoTC })
 )(ProfileContainer)

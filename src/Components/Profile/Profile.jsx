@@ -1,12 +1,13 @@
 import React from 'react';
 import style from './Profile.module.css';
+import Preloader from '../Preloader/Preloader';
 
 class Profile extends React.Component {
 
   state = {
     editMode: false,
-    name: '',
-    about: '',
+    name: this.props.profile.name,
+    about: this.props.profile.about,
   }
 
   activateEditMode = () => {
@@ -40,20 +41,20 @@ class Profile extends React.Component {
     })
   }
 
-  componentDidUpdate(prevProps, prevState) { // проверяем обновления на статус
-    if (prevProps.profile.name !== this.props.profile.name && prevProps.profile.about !== this.props.profile.about) {
-      this.setState({
-        name: this.props.profile.name,
-        about: this.props.profile.about
-      })
-    }
-  }
+  /*  componentDidUpdate(prevProps, prevState) {
+     if (prevProps.profile.name !== this.props.profile.name && prevProps.profile.about !== this.props.profile.about) {
+       this.setState({
+         name: this.props.profile.name,
+         about: this.props.profile.about
+       })
+     }
+   } */ // При октрытии editMode Получал данные в localstate тк раньше страница отрисовывалась быстрее
 
   render() {
     return (
       <div className={style.profile}>
         {this.props.isLoading
-          ? <img src='https://i.gifer.com/90OK.gif' alt='Загрузка...' className={style.preloader}></img>
+          ? <Preloader />
           : <div className={style.profileContainer}>
             <div className={style.photo} style={{ backgroundImage: `url(${this.props.profile.avatar})` }}></div>
             <div className={style.info}>

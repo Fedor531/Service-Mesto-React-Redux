@@ -7,20 +7,16 @@ import CardForm from './NewCardForm/CardFormRedux';
 
 class CardsContainer extends React.Component {
 
-  componentDidMount() {
-    this.props.getCardsThunkCreator()
-  }
-
   render() {
     return <div>
-      <CardForm addCardTC={this.props.addCardTC}/>
+      <CardForm addCardTC={this.props.addCardTC} />
       <Cards
-      cards={this.props.cards}
-      isLoading={this.props.isLoading}
-      userId={this.props.userId}
-      deleteCardTC={this.props.deleteCardTC}
-      addLikeTC={this.props.addLikeTC}
-      deleteLikeTC={this.props.deleteLikeTC}  />
+        cards={this.props.cards}
+        isLoading={this.props.isLoading}
+        userId={this.props.userId}
+        deleteCardTC={this.props.deleteCardTC}
+        addLikeTC={this.props.addLikeTC}
+        deleteLikeTC={this.props.deleteLikeTC} />
     </div>
   }
 }
@@ -35,5 +31,5 @@ const mapStateToProps = (state) => {
 
 
 export default compose(
-  connect(mapStateToProps, { getCardsThunkCreator, addCardTC, deleteCardTC, addLikeTC, deleteLikeTC })
+  connect(mapStateToProps, { addCardTC, deleteCardTC, addLikeTC, deleteLikeTC })
 )(CardsContainer)

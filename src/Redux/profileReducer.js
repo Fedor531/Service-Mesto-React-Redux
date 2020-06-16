@@ -13,7 +13,7 @@ const initialState = {
     cohort: null
   },
 
-  isLoading: false
+  isLoading: true
 }
 
 const cardsReducer = (state = initialState, action) => {

@@ -30,16 +30,20 @@ class Card extends React.Component {
 
   addLike = (id) => {
     this.props.addLikeTC(id)
-    this.setState({
-      isLike: true
-    })
+      .then(() => {
+        this.setState({
+          isLike: true
+        })
+      })
   }
 
   deleteLike = (id) => {
     this.props.deleteLikeTC(id)
-    this.setState({
-      isLike: false
-    })
+      .then(() => {
+        this.setState({
+          isLike: false
+        })
+      })
   }
 
   render() {

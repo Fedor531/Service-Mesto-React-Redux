@@ -30,16 +30,17 @@ class CardForm extends React.Component {
 
 
   render() {
-    return (<div>
-      <button className={style.openFormButton} onClick={this.openFormPopup}>Добавить место</button>
-      {this.state.openCardFormPopup ?
-        <div className={style.popup}>
-          <div className={style.popupContainer}>
-            <img src={closeIcon} className={style.popupClose} onClick={this.closeFormPopup} />
-            <AddNewCardFormRedux onSubmit={this.addNewCard} />
-          </div>
-        </div> : null}
-    </div>
+    return (
+      <div>
+        <button className={style.openFormButton} onClick={this.openFormPopup}>Добавить место</button>
+        {this.state.openCardFormPopup ?
+          <div className={style.popup}>
+            <div className={style.popupContainer}>
+              <img src={closeIcon} className={style.popupClose} onClick={this.closeFormPopup} />
+              <AddNewCardFormRedux onSubmit={this.addNewCard} />
+            </div>
+          </div> : null}
+      </div>
     )
   }
 }
