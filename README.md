@@ -7,6 +7,4 @@ UI - BLL - DAL <br/>
 * HTML 
 * CSS (flexbox, grid) <br/>
 * React + Redux(thunk)
-#### Ссылка на проект 
-
 
