@@ -1,10 +1,12 @@
 import React from 'react';
 import style from './Card.module.css';
+import PopupImage from '../../PopupImage/PopupImage';
 
 class Card extends React.Component {
 
   state = {
-    isLike: false
+    isLike: false,
+    popupIsOpen: false
   }
 
   componentDidMount() {
@@ -17,8 +19,16 @@ class Card extends React.Component {
     })
   }
 
-  hey = (e) => {
-    alert('hey')
+  openPopupImage = (e) => {
+    this.setState({
+      popupIsOpen: true
+    })
+  }
+
+  closePopupImage = (e) => {
+    this.setState({
+      popupIsOpen: false
+    })
   }
 
   deleteCard = (e) => {
@@ -49,7 +59,7 @@ class Card extends React.Component {
   render() {
     return (
       <div className={style.card}>
-        <div onClick={this.hey} className={style.image} style={{ backgroundImage: `url(${this.props.card.link})` }}>
+        <div onClick={this.openPopupImage} className={style.image} style={{ backgroundImage: `url(${this.props.card.link})` }}>
           {this.props.userId === this.props.card.owner._id ? <button onClick={this.deleteCard} className={style.deleteIcon}></button> : undefined}
         </div>
         <div className={style.description}>
@@ -61,17 +71,10 @@ class Card extends React.Component {
             <p className={style.likeCount}>{this.props.card.likes.length}</p>
           </div>
         </div>
+        {this.state.popupIsOpen ? <PopupImage closePopupImage={this.closePopupImage} link={this.props.card.link} /> : undefined}
       </div>
     );
   }
 }
 
 export default Card;
-
-
-/* {props.card.likes.forEach((item) => {
-            if (item._id === props.userId) {
-              return true
-            } return  false
-          }) ? (style.likeIcon + ' ' + style.isLiked) : style.likeIcon} */
-

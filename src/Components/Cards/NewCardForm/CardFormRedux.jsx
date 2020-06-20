@@ -32,7 +32,7 @@ class CardForm extends React.Component {
   render() {
     return (
       <div>
-        <button className={style.openFormButton} onClick={this.openFormPopup}>Добавить место</button>
+        {<button className={style.openFormButton} onClick={this.openFormPopup}>Добавить место</button>}
         {this.state.openCardFormPopup ?
           <div className={style.popup}>
             <div className={style.popupContainer}>

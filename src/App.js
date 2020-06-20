@@ -5,6 +5,7 @@ import ProfileContainer from './Components/Profile/ProfileContainer';
 import { connect } from 'react-redux';
 import { initializationAppTC } from './Redux/appReducer';
 import Preloader from './Components/Preloader/Preloader';
+import Header from './Components/Header/Header';
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
     }
     return (
       <div className="App">
+        <Header />
         <ProfileContainer />
         <CardsContainer />
       </div>

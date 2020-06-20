@@ -1,7 +1,7 @@
 import React from 'react';
 import Cards from './Cards';
 import { connect } from 'react-redux';
-import { getCardsThunkCreator, addCardTC, deleteCardTC, addLikeTC, deleteLikeTC } from '../../Redux/cardsReducer';
+import { addCardTC, deleteCardTC, addLikeTC, deleteLikeTC } from '../../Redux/cardsReducer';
 import { compose } from 'redux';
 import CardForm from './NewCardForm/CardFormRedux';
 

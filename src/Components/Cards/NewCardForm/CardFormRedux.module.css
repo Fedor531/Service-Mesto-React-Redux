@@ -34,7 +34,7 @@
 
 .openFormButton {
   position: absolute;
-  top: 110px;
+  top: 225px;
   right: 300px;
   background-color: transparent;
   border: 1px solid white;
@@ -45,6 +45,27 @@
   display: block;
   cursor: pointer;
 }
+
+@media screen and (max-width: 980px) {
+  .openFormButton {
+    top: 490px;
+    left: 50%;
+    transform: translateX(-75px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .openFormButton {
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .openFormButton {
+    right: 100px;
+  }
+}
+
 
 .openFormButton:focus {
   outline-color: greenyellow;

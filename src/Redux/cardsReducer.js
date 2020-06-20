@@ -29,6 +29,7 @@ const cardsReducer = (state = initialState, action) => {
       }
 
     case ADD_NEW_CARD:
+      debugger
       return {
         ...state, cards: [...state.cards, action.newCard]
       }

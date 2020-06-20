@@ -1,0 +1,30 @@
+.popup {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.picture {
+  height: 80vh;
+  max-width: 80vw;
+}
+
+.content {
+  display: block;
+  position: relative;
+}
+
+.popupClose {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}

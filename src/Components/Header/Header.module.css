@@ -1,0 +1,13 @@
+.header {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #A5A5A5;
+  padding: 0 20px 0 20px;
+}
+
+@media screen and (max-width: 980px) {
+  .header {
+  margin-bottom: 20px;
+  }
+}
