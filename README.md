@@ -7,5 +7,3 @@ UI/UX(react) -(библиотека react-redux)- BLL(redux) - (библиоте
 * HTML 
 * CSS (flexbox, grid) <br/>
 * React + Redux(thunk)
-#### Ссылка на проект <br/>
-https://service-mesto-react-redux.fedor531.vercel.app/
