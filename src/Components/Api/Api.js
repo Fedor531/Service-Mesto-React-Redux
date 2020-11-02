@@ -1,9 +1,9 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://nomoreparties.co/cohort11',
+  baseURL: 'https://nomoreparties.co/cohort12',
   headers: {
-    authorization: '4a26d64f-13d9-4fd9-978e-f9c29a1c49d5',
+    authorization: '28f11b08-e5e2-4767-8f2f-b8c0fbf2748f',
     'Content-Type': 'application/json'
   }
 }); // настройка экземпляр axios
