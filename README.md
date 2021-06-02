@@ -14,17 +14,4 @@ UI/UX(react) -(библиотека react-redux)- BLL(redux) - (библиоте
 * HTML 
 * CSS (flexbox, grid) <br/>
 * React + Redux(thunk)
-#### Manual
-* Setting dependencies 
-```
-npm install
-```
-* Project assembly
-```
-npm run build
-```
-* Project launch
-```
-npm run serve
-```
 #### Link: https://service-mesto-react-redux.vercel.app/
